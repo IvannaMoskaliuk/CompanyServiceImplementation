@@ -1,3 +1,14 @@
+/**
+ * @author Ivanna Moskaliuk KNUTE
+ * @version 23.06.2020
+ *
+ * interface ICompanyService
+ *  Final course task
+ * The following text is a real  approbation task for Java Juniors in the EPAM company. No more explanation.
+ *
+ *      2. IMPLEMENT THE FOLLOWING INTERFACE.
+ **/
+
 package com.company;
 
 import com.company.COMPANY.Company;

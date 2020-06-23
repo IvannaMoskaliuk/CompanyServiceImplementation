@@ -1,8 +1,19 @@
+/**
+ * @author Ivanna Moskaliuk KNUTE
+ * @version 23.06.2020
+ *
+ * Classname Main
+ *  Final course task
+ * The following text is a real  approbation task for Java Juniors in the EPAM company. No more explanation.
+ *
+ *      2. IMPLEMENT THE FOLLOWING INTERFACE.
+ **/
 package com.company;
 
 import com.company.COMPANY.Company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -11,43 +22,51 @@ public class Main {
 
         ICompanyServiceImpl service = new ICompanyServiceImpl();
 
-        Company chief = new Company(null, 20);
-        Company lawyer = new Company(chief, 5);
-        Company developer = new Company(chief, 15);
-        Company backEnd = new Company(developer, 10);
-        Company devOps = new Company(backEnd, 5);
-        Company frontEnd = new Company(developer, 15);
-        Company design = new Company(frontEnd, 5);
-        Company acounting = new Company(null, 20);
+        Company chief = new Company(null,"chief", 20);
+        Company lawyer = new Company(chief, "lawer", 5);
+        Company developer = new Company(chief, "developer",  15);
+        Company backEnd = new Company(developer, "Back-End", 10);
+        Company devOps = new Company(backEnd, "DevOps",  5);
+        Company frontEnd = new Company(developer, "Front-End", 15);
+        Company design = new Company(frontEnd, "Design",  5);
+        Company accounting = new Company(null, "accounting", 20);
 
 
-        // test 1
-        System.out.println(service.getTopLevelParent(chief));
-        System.out.println(service.getTopLevelParent(acounting));
-        System.out.println(service.getTopLevelParent(lawyer));
-        System.out.println(service.getTopLevelParent(developer));
-        System.out.println(service.getTopLevelParent(backEnd));
-        System.out.println(service.getTopLevelParent(devOps));
-        System.out.println(service.getTopLevelParent(frontEnd));
-        System.out.println(service.getTopLevelParent(design));
+        // add all companies to ArrayList
+        List<Company> companies = new ArrayList<>
+                (
+                        Arrays.asList(
+                                chief,
+                                accounting,
+                                lawyer,
+                                developer,
+                                backEnd,
+                                frontEnd,
+                                devOps,
+                                design
+                        )
+                );
 
-        // test 2
+        System.out.println("All existing companies: ");
+        for (Company company : companies) {
+            System.out.println(company.getName());
+        }
 
-        List<Company> companies = new ArrayList<>();
+        // Designer top level parent
+        String designTopLevelParent = service.getTopLevelParent(design).getName();
+        System.out.println("Designer top level parent is: " + designTopLevelParent);
 
-        companies.add(chief);
-        companies.add(acounting);
-        companies.add(lawyer);
-        companies.add(developer);
-        companies.add(backEnd);
-        companies.add(devOps);
-        companies.add(frontEnd);
-        companies.add(design);
+        //  Designer top level parent
+        String lawyerTopLevelParent = service.getTopLevelParent(lawyer).getName();
+        System.out.println("Lawyer top level parent is: " + lawyerTopLevelParent);
 
-        //System.out.println(service.getEmployeeCountForCompanyAndChildren(acounting, companies));
-        System.out.println(service.getEmployeeCountForCompanyAndChildren(chief, companies));
+        //  Accounting top level parent
+        String accountingTopLevelParent = service.getTopLevelParent(accounting).getName();
+        System.out.println("Accounting top level parent is: " + accountingTopLevelParent);
 
-        //     System.out.println(service.getEmployeeCountForCompanyAndChildren(frontEnd, (List<Company>) chief));
+
+
+        System.out.println(service.getEmployeeCountForCompanyAndChildren(design, companies));
 
     }
 }

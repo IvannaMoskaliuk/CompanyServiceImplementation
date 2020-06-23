@@ -1,3 +1,14 @@
+/**
+ * @author Ivanna Moskaliuk KNUTE
+ * @version 23.06.2020
+ *
+ * class ICompanyServiceImpl implements ICompanyService
+ *  Final course task
+ * The following text is a real  approbation task for Java Juniors in the EPAM company. No more explanation.
+ *
+ *      2. IMPLEMENT THE FOLLOWING INTERFACE.
+ **/
+
 package com.company;
 
 import com.company.COMPANY.Company;
@@ -33,22 +44,23 @@ public class ICompanyServiceImpl implements ICompanyService {
     @Override
     public long getEmployeeCountForCompanyAndChildren(Company company, List<Company> companies) {
 
-        companies.add(company);
-
-
-
-       long employees = 0;
-
- /*      if (company.getEmployeesCount() != 0){
-           return employees + company.getEmployeesCount();
-       }
-*/
-
-       employees = companies.stream().mapToLong(Company::getEmployeesCount).sum();
-
-
-
+/*        companies.add(company);
+        long employees = 0;
+        employees += companies.stream().mapToLong(Company::getEmployeesCount).sum();
         return employees;
+ */
+
+        List<Company> children = company.getChildren();
+
+        long employees = company.getEmployeesCount();
+        while (children.size() != 0) {
+
+            employees += children.stream().mapToLong(Company::getEmployeesCount).sum();
+
+        }
+        return employees;
+
+
 
     }
 }
