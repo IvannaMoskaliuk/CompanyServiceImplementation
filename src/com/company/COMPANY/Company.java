@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class Company {
     // parent for this company nullable, when there is no parent for this company
     private Company parent;
-    private String name;
     private long employeesCount;
 
     private ArrayList<Company> children;
@@ -24,9 +23,8 @@ public class Company {
     public Company() {
     }
 
-    public Company(Company parent, String name, long employeesCount) {
+    public Company(Company parent, long employeesCount) {
         this.parent = parent;
-        this.name = name;
         this.employeesCount = employeesCount;
     }
 
@@ -36,14 +34,6 @@ public class Company {
 
     public void setParent(Company parent) {
         this.parent = parent;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public long getEmployeesCount() {
@@ -68,7 +58,6 @@ public class Company {
     public String toString() {
         return "Company{" +
                 "parent=" + parent +
-                ", name='" + name + '\'' +
                 ", employeesCount=" + employeesCount +
                 '}';
     }

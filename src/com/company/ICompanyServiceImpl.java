@@ -43,13 +43,7 @@ public class ICompanyServiceImpl implements ICompanyService {
      */
     @Override
     public long getEmployeeCountForCompanyAndChildren(Company company, List<Company> companies) {
-
-/*        companies.add(company);
-        long employees = 0;
-        employees += companies.stream().mapToLong(Company::getEmployeesCount).sum();
-        return employees;
- */
-
+/*
         List<Company> children = company.getChildren();
 
         long employees = company.getEmployeesCount();
@@ -59,6 +53,14 @@ public class ICompanyServiceImpl implements ICompanyService {
 
         }
         return employees;
+
+*/
+
+        companies.add(company);
+        long employees = 0;
+        employees += companies.stream().mapToLong(Company::getEmployeesCount).sum();
+        return employees;
+
 
 
 
